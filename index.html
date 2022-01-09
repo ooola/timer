@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Timer</title>
+</head>
+<p style="display: inline">Resend code in <b><div style="display: inline" id="timer">60</div> seconds</b></p>
+<body>
+<script>
+
+function runRetryTimer(waitTime) {
+  const t = document.querySelector('#timer');
+  console.log(`t innerHtml is: ${t.innerHTML}`);
+  t.innerHTML = `<b>${waitTime}</b>`;
+
+  const intervalTimer = setInterval(function() {
+    const t = document.querySelector('#timer');
+    console.log(`t innerHtml is: ${t.innerHTML}`);
+    t.innerHTML = `<b>${waitTime}</b>`;
+    waitTime -= 1;
+    if (waitTime === 0) {
+      clearInterval(intervalTimer);
+    }
+  }, 1000);
+}
+
+runRetryTimer(4);
+
+</script>
+</body>
+</html>
